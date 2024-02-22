@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import GamGrid from "./components/GamGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
+import PlatFormSelector from "./components/PlatFormSelector";
 interface Genre {
   id: number;
   name: string;
@@ -27,10 +28,11 @@ lg: '200px 1fr'
       </GridItem>
       <Show above="lg">
       <GridItem area="aside" paddingX={5}>
-        <GenreList onSelectGenre={(genre)=> setSelectedGenre(genre)}/>
+        <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=> setSelectedGenre(genre)}/>
       </GridItem>
       </Show>
       <GridItem area="main">
+        <PlatFormSelector/>
         <GamGrid selectedGenre={selectedGenre}/>
       </GridItem>
     </Grid>
