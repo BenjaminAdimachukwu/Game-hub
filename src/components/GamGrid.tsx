@@ -14,13 +14,23 @@ interface Genre {
     name: string;
     slug: string
 }
-interface Props {
-  selectedGenre : Genre | null;
-  selectedPlatform: Platform | null
+interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null
 }
+interface Props {
+  gameQuery:GameQuery
+}
+// interface Props {
+//   selectedGenre : Genre | null;
+//   selectedPlatform: Platform | null
+// }
 
-const GamGrid = ({selectedGenre, selectedPlatform} : Props) => {
-  const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform);
+
+// const GamGrid = ({selectedGenre, selectedPlatform} : Props) => {
+const GamGrid = ({gameQuery} : Props) => {
+  // const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform);
+  const { data, error, isLoading } = useGames(gameQuery);
   const Skeletons = [1, 2, 3, 4, 5, 6,7, 8];
   return (
     <div>

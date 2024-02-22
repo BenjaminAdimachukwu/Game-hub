@@ -14,9 +14,17 @@ interface Genre {
     name: string;
     slug: string
 }
+
+interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null
+}
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
-  const [selectedPlatform, setselectedPlatform]= useState<Platform | null>(null)
+  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  // const [selectedPlatform, setselectedPlatform]= useState<Platform | null>(null)
+  //the above was commented due to code refactoring
+
+  const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
   return (
     <Grid templateAreas={{
       base: `"nav" "main"`,
@@ -34,12 +42,15 @@ lg: '200px 1fr'
       </GridItem>
       <Show above="lg">
       <GridItem area="aside" paddingX={5}>
-        <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=> setSelectedGenre(genre)}/>
+        {/* <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=> setSelectedGenre(genre)}/> */}
+        <GenreList selectedGenre={GameQuery.genre} onSelectGenre={(genre)=> setGameQuery({...GameQuery, genre})}/>
       </GridItem>
       </Show>
       <GridItem area="main">
-        <PlatFormSelector selectedPlatform={selectedPlatform} onSelectPlatForm={(platform)=> setselectedPlatform(platform)}/>
-        <GamGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
+        {/* <PlatFormSelector selectedPlatform={selectedPlatform} onSelectPlatForm={(platform)=> setselectedPlatform(platform)}/> */}
+        <PlatFormSelector selectedPlatform={GameQuery.platform} onSelectPlatForm={(platform)=> setGameQuery({...GameQuery, platform})}/>
+        {/* <GamGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} /> */}
+        <GamGrid gameQuery={GameQuery}/>
       </GridItem>
     </Grid>
   );

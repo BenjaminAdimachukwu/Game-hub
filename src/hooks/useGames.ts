@@ -20,15 +20,22 @@ interface Game {
   parent_platforms: { platform: Platform }[];
   metacritic: number;
 }
+interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null
+}
 
 const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
+  // selectedGenre: Genre | null,
+  // selectedPlatform: Platform | null
+  gameQuery: GameQuery
 ) =>
   useData<Game>(
     "/games",
-    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
-    [selectedGenre?.id, selectedPlatform?.id]
+    // { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
+    { params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id } },
+    // [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
   );
 
 export default useGames;
