@@ -9,8 +9,14 @@ interface Genre {
   name: string;
   image_background:string
   }
+  interface Platform {
+    id: number;
+    name: string;
+    slug: string
+}
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedPlatform, setselectedPlatform]= useState<Platform | null>(null)
   return (
     <Grid templateAreas={{
       base: `"nav" "main"`,
@@ -32,8 +38,8 @@ lg: '200px 1fr'
       </GridItem>
       </Show>
       <GridItem area="main">
-        <PlatFormSelector/>
-        <GamGrid selectedGenre={selectedGenre}/>
+        <PlatFormSelector selectedPlatform={selectedPlatform} onSelectPlatForm={(platform)=> setselectedPlatform(platform)}/>
+        <GamGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
       </GridItem>
     </Grid>
   );

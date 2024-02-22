@@ -9,11 +9,18 @@ interface Genre {
   name: string;
   image_background:string
   }
-interface Props {
-  selectedGenre : Genre | null
+  interface Platform {
+    id: number;
+    name: string;
+    slug: string
 }
-const GamGrid = ({selectedGenre} : Props) => {
-  const { data, error, isLoading } = useGames(selectedGenre);
+interface Props {
+  selectedGenre : Genre | null;
+  selectedPlatform: Platform | null
+}
+
+const GamGrid = ({selectedGenre, selectedPlatform} : Props) => {
+  const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform);
   const Skeletons = [1, 2, 3, 4, 5, 6,7, 8];
   return (
     <div>
