@@ -24,6 +24,7 @@ interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string
+  searchText: string
 }
 
 const useGames = (
@@ -38,7 +39,8 @@ const useGames = (
       params: {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
-        ordering: gameQuery.sortOrder
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchText
       },
     },
     // [selectedGenre?.id, selectedPlatform?.id]
