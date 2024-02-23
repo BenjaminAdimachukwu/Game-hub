@@ -5,6 +5,7 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import PlatFormSelector from "./components/PlatFormSelector";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 interface Genre {
   id: number;
   name: string;
@@ -53,8 +54,11 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
+
+        <Box paddingLeft={5}>
+        <GameHeading gameQuery={gameQuery}/>
         {/* <PlatFormSelector selectedPlatform={selectedPlatform} onSelectPlatForm={(platform)=> setselectedPlatform(platform)}/> */}
-        <Flex paddingLeft={5} marginBottom={5}> 
+        <Flex  marginBottom={5}> 
         <Box marginRight={5}>
         <PlatFormSelector
           selectedPlatform={gameQuery.platform}
@@ -65,6 +69,7 @@ function App() {
         </Box>
         <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})}/>
           </Flex>
+          </Box>
         {/* <GamGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} /> */}
         <GamGrid gameQuery={gameQuery} />
       </GridItem>
