@@ -34,9 +34,9 @@ const GamGrid = ({gameQuery} : Props) => {
   // const { data, error, isLoading } = useGames(selectedGenre,selectedPlatform);
   const { data, error, isLoading } = useGames(gameQuery);
   const Skeletons = [1, 2, 3, 4, 5, 6,7, 8];
+
+  if(error) return  <Text>{error}</Text>
   return (
-    <div>
-      {error && <Text>{error}</Text>}
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         padding="20px"
@@ -55,7 +55,6 @@ const GamGrid = ({gameQuery} : Props) => {
           </GameCardContainer>
         ))}
       </SimpleGrid>
-    </div>
   );
 };
 
