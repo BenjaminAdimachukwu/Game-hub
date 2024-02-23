@@ -22,7 +22,8 @@ interface Game {
 }
 interface GameQuery {
   genre: Genre | null;
-  platform: Platform | null
+  platform: Platform | null;
+  sortOrder: string
 }
 
 const useGames = (
@@ -33,7 +34,13 @@ const useGames = (
   useData<Game>(
     "/games",
     // { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
-    { params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id } },
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder
+      },
+    },
     // [selectedGenre?.id, selectedPlatform?.id]
     [gameQuery]
   );
