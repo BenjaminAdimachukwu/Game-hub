@@ -9,7 +9,9 @@ image_background:string
 }
 interface fetchResponse<T> {
     count: number;
+    next: string | null;
     results: T[];
+    
   }
 const apiClient = new APIclient<Genre>('/genres')
 

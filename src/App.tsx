@@ -24,9 +24,6 @@ interface GameQuery {
   searchText: string
 }
 function App() {
-  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
-  // const [selectedPlatform, setselectedPlatform]= useState<Platform | null>(null)
-  //the above was commented due to code refactoring
 
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   
@@ -46,7 +43,6 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          {/* <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=> setSelectedGenre(genre)}/> */}
           <GenreList
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
@@ -57,7 +53,6 @@ function App() {
 
         <Box paddingLeft={5}>
         <GameHeading gameQuery={gameQuery}/>
-        {/* <PlatFormSelector selectedPlatform={selectedPlatform} onSelectPlatForm={(platform)=> setselectedPlatform(platform)}/> */}
         <Flex  marginBottom={5}> 
         <Box marginRight={5}>
         <PlatFormSelector
@@ -70,7 +65,6 @@ function App() {
         <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})}/>
           </Flex>
           </Box>
-        {/* <GamGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} /> */}
         <GamGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>

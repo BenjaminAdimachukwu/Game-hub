@@ -8,10 +8,11 @@ interface Platform {
     name: string;
     slug: string
 }
-interface fetchResponse<T> {
-    count: number;
-    results: T[];
-  }
+// interface fetchResponse<T> {
+//     count: number;
+//     next: string | null;
+//     results: T[];
+//   }
 
 const apiClient = new APIclient('/platforms/lists/parents')
 
