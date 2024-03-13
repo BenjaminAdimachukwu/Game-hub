@@ -9,11 +9,12 @@ interface Platform {
 }
 interface Props {
   onSelectPlatForm: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?:number;
 }
-const PlatFormSelector = ({ onSelectPlatForm, selectedPlatform }: Props) => {
+const PlatFormSelector = ({ onSelectPlatForm, selectedPlatformId }: Props) => {
   const { data, error } = usePlatForms();
   if (error) return null;
+  const selectedPlatform = data?.results.find(g => g.id === selectedPlatformId)
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
