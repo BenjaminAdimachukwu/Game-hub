@@ -1,5 +1,4 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-//import apiClient from "../services/api-client";
 import APIclient from "../services/api-client";
 
 interface Platform {
