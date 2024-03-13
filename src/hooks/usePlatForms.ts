@@ -14,7 +14,7 @@ interface Platform {
 //     results: T[];
 //   }
 
-const apiClient = new APIclient('/platforms/lists/parents')
+const apiClient = new APIclient<Platform>('/platforms/lists/parents')
 
 const usePlatForms = ()=> useQuery({
     queryKey:['platforms'],
