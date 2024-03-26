@@ -5,10 +5,21 @@ interface Platform {
   name: string;
   slug: string;
 }
+  interface Genre {
+    id: number;
+    name: string;
+    image_background: string;
+  }
+ interface Publisher {
+    id: number;
+    name: string;
+  }
 interface Game {
   id: number;
   name: string;
   slug: string;
+  genres: Genre[];
+  publishers: Publisher[]
   background_image: string;
   description_raw: string;
   parent_platforms: { platform: Platform }[];
