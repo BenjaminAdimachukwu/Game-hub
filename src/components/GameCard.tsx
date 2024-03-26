@@ -3,6 +3,7 @@ import CriticScore from './CriticScore';
 import PLatFormIconLists from './PLatFormIconLists';
 import getCroppedImageUrl from '../services/image.url';
 import Emoji from './Emoji';
+import { Link } from 'react-router-dom';
 
 interface Platform {
   id: number
@@ -12,6 +13,7 @@ interface Platform {
 interface Game {
   id: number;
   name: string;
+  slug: string;
   background_image: string;
   parent_platforms:{ platform : Platform}[];
   metacritic: number
@@ -32,7 +34,10 @@ const GameCard = ({game} : Props) => {
          <PLatFormIconLists platforms={game.parent_platforms.map(p => p.platform)}/>
          <CriticScore score={game.metacritic}/>
           </HStack >
-          <Heading fontSize='2xl'>{game.name} <Emoji rating={game.rating_top}/></Heading>
+          <Heading fontSize='2xl'>
+            <Link to={`/games/${game.slug}`}> {game.name}</Link>
+            
+            <Emoji rating={game.rating_top}/></Heading>
         </CardBody>
     </Card>
   ) 

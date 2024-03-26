@@ -17,10 +17,13 @@ class APIclient<T> {
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
-  getAll = (config: AxiosRequestConfig)=> {
+  getAll = (config: AxiosRequestConfig) => {
     return AxioInstance.get<fetchResponse<T>>(this.endpoint, config).then(
       (res) => res.data
     );
+  };
+  get = (id:number | string) => {
+    return AxioInstance.get<T>(this.endpoint + '/'  + id).then((res) => res.data)
   }
 }
-export default APIclient
+export default APIclient;
