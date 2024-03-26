@@ -8,7 +8,6 @@ const Layout = () => {
     <>
         <Navbar/>
         <Box padding={5}>
-
         <Outlet/>
         </Box>
     </>
