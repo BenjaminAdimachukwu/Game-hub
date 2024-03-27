@@ -3,7 +3,6 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import GameDetailPage from "./pages/GameDetailPage";
 import ErrorPage from "./pages/Errorpage";
-
 const router = createBrowserRouter([
   {
     path: "/",
